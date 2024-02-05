@@ -27,9 +27,9 @@ const CreateBlog = ({ blogs, setBlogs, setErrorMessage, setAddMessage }) => {
                 author: "",
                 url: ""
             })
-
-
+            console.log("new blog added...")
         } catch (error) {
+            console.log("error in create blog")
             setErrorMessage(error.message);
             setTimeout(() => setErrorMessage(null), 5000);
         }
@@ -38,9 +38,10 @@ const CreateBlog = ({ blogs, setBlogs, setErrorMessage, setAddMessage }) => {
     return (
         <div>
             <div style={hideWhenVisible}>
-                <button onClick={() => setCreateBlogVisible(true)}>create Blog</button>
+                <button data-testid="create-blog" onClick={() => setCreateBlogVisible(true)}>create Blog</button>
             </div>
             <div style={showWhenVisible}>
+              <h2>create new Blog</h2>
                 <form onSubmit={handleBlog}>
                     <div>
                         <input
@@ -71,10 +72,10 @@ const CreateBlog = ({ blogs, setBlogs, setErrorMessage, setAddMessage }) => {
                         />
 
                     </div>
-                    <button type='submit'> Create</button>
+                    <button data-testid='create' type='submit'> Create</button>
 
                 </form>
-                <button onClick={() => setCreateBlogVisible(false)}>cancel</button>
+                <button  onClick={() => setCreateBlogVisible(false)}>cancel</button>
             </div>
 
         </div>
