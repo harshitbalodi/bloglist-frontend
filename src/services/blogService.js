@@ -1,5 +1,8 @@
 import axios from "axios";
-const baseUrl = "https://favoriteblogs.onrender.com/api/blogs";
+//for deployment 
+// const baseUrl = "https://favoriteblogs.onrender.com/api/blogs";
+//for testing
+const baseUrl = 'http://localhost:3003/api/blogs'
 let token = null;
 
 const setToken = (newToken) => {

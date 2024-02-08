@@ -12,6 +12,12 @@ const App = () => {
   
   const [addMessage, setAddMessage] = useState(null);
   const [errorMessage, setErrorMessage] = useState(null);
+  
+  const [blog, setBlog] = useState({
+    title: "",
+    author: "",
+    url: ""
+  })
 
   useEffect(() => {
     const onLogin = async () => {
@@ -33,18 +39,18 @@ const App = () => {
     }
 
   }, [])
-
-  const handleLike = async () => {
-    try {
-      const data = await blogService.likeBlog(blog.id);
-      const oldblogs = [...blogs];
-      oldblogs[index] = data;
-      setBlogs(oldblogs);
-    } catch (error) {
-      setErrorMessage(error.message);
-      setTimeout(() => setErrorMessage(null), 5000);
-    }
-  }
+  //for jest testing uncomment this
+  // const handleLike = async (id) => {
+  //   try {
+  //     const data = await blogService.likeBlog(blog.id);
+  //     const oldblogs = [...blogs];
+  //     oldblogs[index] = data;
+  //     setBlogs(oldblogs);
+  //   } catch (error) {
+  //     setErrorMessage(error.response.data);
+  //     setTimeout(() => setErrorMessage(null), 5000);
+  //   }
+  // }
 
   const handleLogout = async (e) => {
     e.preventDefault();
@@ -52,6 +58,27 @@ const App = () => {
     localStorage.removeItem('userLoggedIn');
     setUser(null);
   }
+
+  const handleBlog = async (e) => {
+    e.preventDefault();
+    try {
+        const data = await blogService.createBlog(blog);
+        console.log(data);
+        setAddMessage(`a new blog ${blog.title} by ${blog.author}`)
+        setTimeout(() => setAddMessage(null), 5000);
+        setBlogs([...blogs, data])
+        setBlog({
+            title: "",
+            author: "",
+            url: ""
+        })
+        console.log("new blog added...")
+    } catch (error) {
+        console.log("error in create blog")
+        setErrorMessage(error.response.data);
+        setTimeout(() => setErrorMessage(null), 5000);
+    }
+}
 
   return (
     <div>
@@ -75,20 +102,22 @@ const App = () => {
               <span> {user.name} is logged in</span>
               <button onClick={handleLogout} > Logout </button>
               <CreateBlog
-                blogs={blogs}
-                setBlogs={setBlogs}
-                setErrorMessage={setErrorMessage}
-                setAddMessage={setAddMessage}
+                setBlog={setBlog}
+                handleBlog={handleBlog}
+                blog={blog}
               />
 
 
               {
                 blogs.map((blog, index) =>
                   <Blog
-                    handleLike={handleLike}
                     key={blog.id}
                     blog={blog}
+                    blogs={blogs} 
+                    setBlogs={setBlogs}
                     setErrorMessage={setErrorMessage}
+                    index={index}
+                    user={user}
                   />
                 )
               }

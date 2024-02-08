@@ -4,7 +4,7 @@ import '../index.css'
 const ErrorNotitfication = ({errorMessage}) => {
   return errorMessage && (
     <div className='error'>
-        <p>{errorMessage}</p>
+        <p>{JSON.stringify(errorMessage)}</p>
     </div>
   )
 }

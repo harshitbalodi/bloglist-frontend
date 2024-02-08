@@ -81,16 +81,19 @@ describe("click like button", () => {
 
 describe("Create Blog component", () => {
   test("calls event handle with the right details on form submission", async () => {
-    const mockSetBlogs = jest.fn();
-    const mockSetErrorMessage = jest.fn();
-    const mockSetAddMessage = jest.fn();
+    const mockSetBlog = jest.fn();
+    const mockHandleBlog = jest.fn();
+    const blog={
+      title:"",
+      url:"",
+      author:""
+    }
 
     render(
       <CreateBlog
-        blogs={[]}
-        setAddMessage={mockSetAddMessage}
-        setErrorMessage={mockSetErrorMessage}
-        setBlogs={mockSetBlogs}
+        setBlog={mockSetBlog}
+        handleBlog={mockHandleBlog}
+        blog={blog}
       />
     );
     const user = userEvent.setup();
@@ -101,13 +104,8 @@ describe("Create Blog component", () => {
     user.type(screen.getByPlaceholderText('url'),'https://www.worldwidechatri.com');
 
     await user.click(screen.getByTestId("create"));
-
-    // expect(mockSetAddMessage).toHaveBeenCalledWith(
-    //   "a new blog How to create an umbrella brand by Harshit Ji chatriwale"
-    // );
    
-    expect(mockSetBlogs).toHaveBeenCalled();
+    expect(mockHandleBlog).toHaveBeenCalled();
     
-    // expect(mockSetErrorMessage).not.toHaveBeenCalled();
-  });
+    });
 });

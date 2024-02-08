@@ -15,16 +15,20 @@ const LoginForm = ({setUser, setErrorMessage, errorMessage}) => {
           setUser(data);
           setUsername("");
           setPassword("");
-        } catch (error) {
+        } catch (error){
           console.log("Login Error:", error);
-          console.log("Error message:", error.message);
-          setErrorMessage(error.message);
+          if(error?.response?.data){
+            setErrorMessage(error?.response?.data);
+          }else{
+            setErrorMessage(error?.message);
+          }
+          
           setTimeout(() => setErrorMessage(null), 5000);
         }
       }
     return (
         <div>
-            <h2>Login in to application</h2>
+            <h2>Login to application</h2>
             <ErrorNotitfication errorMessage={errorMessage} />
             <form onSubmit={handleLogin}>
                 <div>
@@ -33,6 +37,7 @@ const LoginForm = ({setUser, setErrorMessage, errorMessage}) => {
                         type="text"
                         name="Username"
                         value={username}
+                        id="username"
                         onChange={(e) => setUsername(e.target.value)}
                     />
                 </div>
@@ -42,10 +47,11 @@ const LoginForm = ({setUser, setErrorMessage, errorMessage}) => {
                         type="password"
                         name="Password"
                         value={password}
+                        id='password'
                         onChange={(e) => setPassword(e.target.value)}
                     />
                 </div>
-                <button type="submit" >login</button>
+                <button type="submit" id='login'>login</button>
             </form>
         </div>
     )
