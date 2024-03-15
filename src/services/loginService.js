@@ -1,8 +1,8 @@
 import axios from "axios"
 //for deployment 
-// const baseUrl ="https://favoriteblogs.onrender.com/api/login"
+const baseUrl ="https://favoriteblogs.onrender.com/api/login"
 //for testing
-const baseUrl = 'http://localhost:3003/api/login'
+// const baseUrl = 'http://localhost:3003/api/login'
 
 const login = async (obj)=>{
     console.log(obj);
