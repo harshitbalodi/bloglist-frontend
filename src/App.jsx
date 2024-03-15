@@ -5,6 +5,7 @@ import AddNotification from './components/AddNotification'
 import ErrorNotitfication from './components/ErrorNotification'
 import CreateBlog from './components/CreateBlog'
 import LoginForm from './components/LoginForm'
+import NewUser from './Pages/NewUser'
 const App = () => {
 
   const [blogs, setBlogs] = useState([]);
@@ -79,7 +80,11 @@ const App = () => {
         setTimeout(() => setErrorMessage(null), 5000);
     }
 }
-
+ // <LoginForm
+          //   setUser={setUser}
+          //   setErrorMessage={setErrorMessage} 
+          //   errorMessage={errorMessage}
+          // />
   return (
     <div>
       {
