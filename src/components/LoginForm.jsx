@@ -1,9 +1,9 @@
 import { useState } from 'react';
 import loginService from '../services/loginService';
 import blogService from '../services/blogService';
-import ErrorNotitfication from './ErrorNotification';
+// import ErrorNotitfication from './ErrorNotification';
 import TemplateForm from './TemplateForm/TemplateForm';
-import { setUser } from '../store/UserSlice';
+import { setUser } from '../store/userSlice';
 import { useDispatch } from 'react-redux';
 
 const LoginForm = () => {

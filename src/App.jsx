@@ -6,7 +6,7 @@ import Header from './components/Header/Header'
 import Footer from './components/Footer/Footer'
 import BlogsPage from './Pages/BlogsPage/BlogsPage'
 import { useDispatch, useSelector } from 'react-redux'
-import { setUser } from './store/UserSlice'
+import { setUser } from './store/userSlice'
 
 const App = () => {
   const dispatch = useDispatch();

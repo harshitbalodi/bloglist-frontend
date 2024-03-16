@@ -4,7 +4,7 @@ import CreateBlog from '../../components/CreateBlog/CreateBlog'
 import { useDispatch, useSelector } from 'react-redux';
 import { BlogThunk } from '../../store/blogsSlice';
 import { useEffect } from 'react';
-import { setUser } from '../../store/UserSlice';
+import { setUser } from '../../store/userSlice';
 
 const BlogsPage = () => {
   const [user, blogs] = useSelector(state => [state.user, state.blogs]);
