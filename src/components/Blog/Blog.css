@@ -1,0 +1,13 @@
+.blog{
+    width: 250px;
+    height: 200px;
+    text-wrap: wrap;
+    overflow-y: auto;
+    border-radius: .2rem;
+    border : 1px solid #ddd;
+    margin: 15px;
+    padding: 15px;    
+}
+.blog:hover{
+    box-shadow: 0 2px 5px #0000001a;
+}

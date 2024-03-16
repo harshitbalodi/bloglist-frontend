@@ -1,19 +1,22 @@
 import { useState } from "react"
-import blogService from "../services/blogService";
+import blogService from "../../services/blogService";
+import { useDispatch, useSelector } from "react-redux";
+import { setBlogs } from "../../store/blogsSlice";
+import './Blog.css';
 
-const Blog = ({ blog, setErrorMessage, blogs, setBlogs, index, user }) => {
+const Blog = ({ blog, index }) => {
   const [isView, setIsView] = useState(false);
-  console.log(blog)
-  const handleLike = async (id) => {
+  const [user , blogs] = useSelector(state => [state.user, state.blogs]);
+  const dispatch = useDispatch();
+
+  const handleLike = async () => {
     try {
       const data = await blogService.likeBlog(blog.id);
       const oldblogs = [...blogs];
       oldblogs[index] = data;
-      setBlogs(oldblogs);
+      dispatch(setBlogs(oldblogs));
     } catch (error) {
       console.log(error);
-      setErrorMessage(error.response.data);
-      setTimeout(() => setErrorMessage(null), 5000);
     }
   }
 
@@ -25,8 +28,7 @@ const Blog = ({ blog, setErrorMessage, blogs, setBlogs, index, user }) => {
         const oldblogs = blogs.filter(eachblog => eachblog.id != blog.id)
         setBlogs(oldblogs);
       } catch (error) {
-        setErrorMessage(error.response.data);
-        setTimeout(() => setErrorMessage(null), 5000);
+       console.log(error);
       }
     }
   }
