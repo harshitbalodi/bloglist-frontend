@@ -1,5 +1,8 @@
 import React from 'react'
 import { useState } from 'react'
+import './CreateBlog.css';
+import CrossIcon from '../../assets/cross-icon.svg'
+import PlusIcon from '../../assets/plus-icon.svg';
 
 const CreateBlog = () => {
     const [createBlogVisible, setCreateBlogVisible] = useState(false);
@@ -33,13 +36,18 @@ const CreateBlog = () => {
     }
     
     return (
-        <div>
+        <div className='create-blog-wrapper'>
             <div style={hideWhenVisible}>
-                <button data-testid="create-blog" id='create-blog' onClick={() => setCreateBlogVisible(true)}>create Blog</button>
+                <button data-testid="create-blog" className='show-form' onClick={() => setCreateBlogVisible(true)}>
+                    Post Blog
+                    <img  src={PlusIcon} width={25} alt="" />
+                </button>
             </div>
-            <div style={showWhenVisible}>
-              <h2>create new Blog</h2>
-                <form onSubmit={handleBlog}>
+            <div className='blog-form' style={showWhenVisible}>
+                <button className='cross-icon' onClick={() => setCreateBlogVisible(false)}>
+                    <img src={CrossIcon} width={30} alt="" />
+                </button>
+                <form  onSubmit={handleBlog}>
                     <div>
                         <input
                             type="text"
@@ -48,6 +56,7 @@ const CreateBlog = () => {
                             placeholder="title"
                             id='title'
                             onChange={(e) => setBlog({ ...blog, title: e.target.value })}
+                            required
                         />
                     </div>
                     <div>
@@ -58,6 +67,7 @@ const CreateBlog = () => {
                             placeholder='author'
                             id='author'
                             onChange={(e) => setBlog({ ...blog, author: e.target.value })}
+                            required
                         />
 
                     </div>
@@ -69,13 +79,14 @@ const CreateBlog = () => {
                             placeholder='url'
                             id='url'
                             onChange={(e) => setBlog({ ...blog, url: e.target.value })}
+                            required
                         />
 
                     </div>
-                    <button data-testid='create' id='create' type='submit'> Create</button>
+                    <button data-testid='create' className='post-blog' type='submit'> Post</button>
 
                 </form>
-                <button  onClick={() => setCreateBlogVisible(false)}>cancel</button>
+                
             </div>
 
         </div>

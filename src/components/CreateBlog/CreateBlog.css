@@ -1,0 +1,48 @@
+.create-blog-wrapper{
+    margin:1rem;
+    width: 300px;
+}
+.post-blog, .show-form{
+    padding: .7rem;
+    border: none;
+    font-size: medium;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: .1rem;
+    border-radius: .2rem;
+    margin: .5rem 0 ;
+    cursor: pointer;
+    color: rgb(126, 124, 124);
+}
+.post-blog:hover, .show-formhover{
+    background-color: #f84464;
+    color: #fff;
+    ;
+}
+.blog-form{
+    position: relative;
+    box-shadow: 0 2px 5px #0000001a;
+    padding: .7rem
+}
+.blog-form input[type=text]{
+    width: 85%;
+    height: 1.4rem;
+    margin-top: .7rem;
+    padding: .4rem;
+    font-size: medium;
+}
+
+.cross-icon{
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    background-color: rgb(0, 0, 0, 0);
+    border: none;
+    padding: 0;
+    margin: 0;
+}
+.cross-icon:hover{
+    background-color: #f6f3f3;
+    border-radius: 10%;
+}

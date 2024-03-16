@@ -1,6 +1,6 @@
 import './BlogsPage.css';
 import Blog from '../../components/Blog/Blog';
-import CreateBlog from '../../components/CreateBlog'
+import CreateBlog from '../../components/CreateBlog/CreateBlog'
 import { useDispatch, useSelector } from 'react-redux';
 import { BlogThunk } from '../../store/blogsSlice';
 import { useEffect } from 'react';

@@ -1,7 +1,9 @@
 .blogs-wrapper{
     margin: .6rem;
+    min-height: 90vh;
 }
 .blogs-container{
     display: flex;
     flex-wrap: wrap;
+    justify-content: center;
 }
