@@ -8,9 +8,9 @@ const FooterLink = () => {
   return <div>
     <h4>Contact</h4>
     <p>You can reach me through my social media</p>
-    <a href="https://github.com/harshitbalodi/"> <img src={GithubLogo} alt="github-logo" /></a>
-    <a href="https://www.linkedin.com/in/harshit-balodi/"> <img src={LinkedInLogo} alt="linnkedin-logo" /></a>
-    <a href="https://twitter.com/BalodiHarshit"><img src={TwitterLogo} alt="twitter-logo" /></a>
+    <a href="https://github.com/harshitbalodi/" title='github' target="_blank"> <img src={GithubLogo} alt="github-logo" /></a>
+    <a href="https://www.linkedin.com/in/harshit-balodi/" title='linkedin' target="_blank"><img src={LinkedInLogo} alt="linnkedin-logo" /></a>
+    <a href="https://twitter.com/BalodiHarshit" title='twitter' target="_blank"><img src={TwitterLogo} alt="twitter-logo" /></a>
   </div>
 }
 const Footer = () => {
