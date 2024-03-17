@@ -7,6 +7,7 @@ import Footer from './components/Footer/Footer'
 import BlogsPage from './Pages/BlogsPage/BlogsPage'
 import { useDispatch, useSelector } from 'react-redux'
 import { setUser } from './store/userSlice'
+import './index.css';
 
 const App = () => {
   const dispatch = useDispatch();

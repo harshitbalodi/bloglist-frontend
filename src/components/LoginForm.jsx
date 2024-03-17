@@ -44,6 +44,7 @@ const LoginForm = () => {
                         value={username}
                         id="username"
                         onChange={(e) => setUsername(e.target.value)}
+                        required
                     />
                 </div>
                 <div>
@@ -54,6 +55,7 @@ const LoginForm = () => {
                         value={password}
                         id='password'
                         onChange={(e) => setPassword(e.target.value)}
+                        required
                     />
                 </div>
                 <button type="submit" id='login'>login</button>

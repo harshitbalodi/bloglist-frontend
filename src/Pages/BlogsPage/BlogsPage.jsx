@@ -23,16 +23,10 @@ const BlogsPage = () => {
     onLogin();
   }, [user])
 
-  const handleLogout = async (e) => {
-    e.preventDefault();
-    console.log("Logout...")
-    localStorage.removeItem('userLoggedIn');
-    dispatch(setUser(null));
-  }
+ 
   return (
     <div className='blogs-wrapper'>
-      {/* <span> {user.name} is logged in</span> */}
-      {/* <button onClick={handleLogout} > Logout </button> */}
+      
       <CreateBlog />
       <div className='blogs-container'>
         {

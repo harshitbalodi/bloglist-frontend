@@ -15,7 +15,7 @@
     cursor: pointer;
     color: rgb(126, 124, 124);
 }
-.post-blog:hover, .show-formhover{
+.post-blog:hover, .show-form:hover{
     background-color: #f84464;
     color: #fff;
     ;

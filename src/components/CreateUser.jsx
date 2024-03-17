@@ -33,19 +33,19 @@ const CreateUser = () => {
         <form onSubmit={handleSubmit}>
           <div>
             <label htmlFor="name">Name</label>
-            <input type="text" id="name" value={name} onChange={(e)=>setName(e.target.value)}/>
+            <input type="text" id="name" value={name} onChange={(e)=>setName(e.target.value)} required/>
           </div>
           <div>
             <label htmlFor="username">Username</label>
-            <input type="text" id="username" value={username} onChange={e => setUsername(e.target.value)}/>
+            <input type="text" id="username" value={username} onChange={e => setUsername(e.target.value)} required/>
           </div>
           <div>
             <label htmlFor="password">Password</label>
-            <input type="password" id="password" value={password} onChange={e => setPassword(e.target.value)}/>
+            <input type="password" id="password" value={password} onChange={e => setPassword(e.target.value)} required/>
           </div>
           <div>
             <label htmlFor="cpassword">Confirm Password</label>
-            <input type="password" id="cpassword" value={confirmPassword} onChange={e => setConfirmPassword(e.target.value)}/>
+            <input type="password" id="cpassword" value={confirmPassword} onChange={e => setConfirmPassword(e.target.value)} required/>
           </div>
           <button type='submit'>Create</button>
         </form>
