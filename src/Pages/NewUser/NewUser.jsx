@@ -31,24 +31,7 @@ const NewUser = () => {
             </div>
           </div>
         </div>
-         {/* <div className='btn-wrapper'>
-          <div className='btn-container'>
-            <button
-              className={activeComponent === 'login' ? 'active' : ''}
-              onClick={() => setActiveComponent('login')}>
-              Login
-            </button>
-            <button
-              className={activeComponent === 'newUser' ? 'active' : ''}
-              onClick={() => setActiveComponent('newUser')}>
-              Register
-            </button>
-             Indicator to show active button 
-            
-          </div>
-        </div> */}
-
-
+         
         {activeComponent === 'login' && <LoginForm />}
         {activeComponent === 'newUser' && <CreateUser />}
       </div>

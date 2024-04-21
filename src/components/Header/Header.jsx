@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import ArrowDown from '../../assets/arrow-down.svg';
 import { setUser } from '../../store/userSlice';
 
+
 const Header = () => {
   const dispatch = useDispatch();
   const user = useSelector(state => state.user);
@@ -16,7 +17,10 @@ const Header = () => {
   }
   return (
     <div className='header'>
-      <h3>Bloglist</h3>
+     <div>
+      <img src="../../assets/bloglist-logo.jpg" alt="Bloglist" />
+      {/* <h3>Bloglist</h3> */}
+      </div> 
       {user && <div className='dropdown-container'
         onMouseEnter={() => setIsOpen(true)}
         onMouseLeave={() => setIsOpen(false)}
