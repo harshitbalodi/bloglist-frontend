@@ -1,17 +1,12 @@
 import axios from "axios";
-//for deployment 
-const baseUrl = "https://favoriteblogs.onrender.com/api/blogs";
-//for testing
-// const baseUrl = 'http://localhost:3003/api/blogs'
-let token = null;
+import axiosInstance from "./axios";
 
-const setToken = (newToken) => {
-  if (newToken) token = `Bearer ${newToken}`;
-};
+console.log(import.meta.env.VITE_BACKEND_URI);
+const baseUrl = import.meta.env.VITE_BACKEND_URI + "/api/blogs";
 
 const getAll = async () => {
   try {
-    const response = await axios.get(baseUrl);
+    const response = await axiosInstance.get('/blogs');
     return response.data;
   } catch (error) {
     console.log(error);
@@ -48,4 +43,4 @@ const deleteBlog = async (id) => {
     throw error;
   }
 };
-export default { getAll, setToken, createBlog, likeBlog, deleteBlog };
+export default { getAll, createBlog, likeBlog, deleteBlog };

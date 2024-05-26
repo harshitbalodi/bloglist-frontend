@@ -5,6 +5,7 @@ import blogService from '../services/blogService';
 import TemplateForm from './TemplateForm/TemplateForm';
 import { setUser } from '../store/userSlice';
 import { useDispatch } from 'react-redux';
+import token from '../services/token';
 
 const LoginForm = () => {
   const dispatch = useDispatch();
@@ -16,7 +17,7 @@ const LoginForm = () => {
         try {
           const data = await loginService.login({ username: username, password: password });
           console.log(data);
-          blogService.setToken(data.token);
+          token.setToken(data.accessToken);
           localStorage.setItem('userLoggedIn', JSON.stringify(data));
           dispatch(setUser(data));
           setUsername("");

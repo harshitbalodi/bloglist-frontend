@@ -8,18 +8,26 @@ import BlogsPage from './Pages/BlogsPage/BlogsPage'
 import { useDispatch, useSelector } from 'react-redux'
 import { setUser } from './store/userSlice'
 import './index.css';
+import token from './services/token'
+import loginService from './services/loginService'
 
 const App = () => {
   const dispatch = useDispatch();
   const user = useSelector(state => state.user);
 
   useEffect(() => {
-    const userDetaills = localStorage.getItem('userLoggedIn');
-    if (userDetaills) {
-      const accesstokenData = JSON.parse(userDetaills);
-      dispatch(setUser(accesstokenData))
-      blogService.setToken(accesstokenData.token);
+    const isUserExist= async()=>{
+      try{
+        const {data} = await loginService.refresh();
+        dispatch(setUser(data));
+      }catch(error){
+        if(error.status===401){
+          token.setToken(null); 
+        }
+      }
+
     }
+    isUserExist();
   }, [])
 
   return (
