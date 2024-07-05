@@ -19,8 +19,10 @@ const App = () => {
     const isUserExist= async()=>{
       try{
         const {data} = await loginService.refresh();
+        console.log("data when hitting the login/refresh",data);
         dispatch(setUser(data));
       }catch(error){
+        console.warn("error in refresh token auth", error)
         if(error.status===401){
           token.setToken(null); 
         }

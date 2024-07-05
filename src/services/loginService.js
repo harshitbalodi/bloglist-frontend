@@ -1,12 +1,10 @@
-import axios from "axios"
 import token from "./token";
 import axiosInstance from "./axios";
-const baseUrl =import.meta.env.VITE_BACKEND_URI+ "/api/login"
 
 const login = async (obj)=>{
     console.log(obj);
     try{
-    const response= await axiosInstance.post('/login', obj);
+    const response= await axiosInstance.post('/auth/login', obj);
     console.log(response.data);
     console.log("inside login service", response.data.accessToken);
     token.setToken(response.data.accessToken);
@@ -19,12 +17,16 @@ const login = async (obj)=>{
 
 const refresh = async () => {
   try {
-    const response = await axiosInstance.get("/login/refresh");
+    const response = await axiosInstance.get("/auth/refresh");
+    console.log("response from refresh",response);
     token.setToken(response.data.accessToken);
-    return response.data;
+    return response;
   } catch (error) {
     console.log(error);
   }
 };
 
-export default {login};
+const logout =  async () =>{
+   await axiosInstance.get('/auth/logout');
+}
+export default {login,refresh, logout};
