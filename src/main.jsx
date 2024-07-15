@@ -3,14 +3,11 @@ import App from './App'
 import { Provider } from 'react-redux'
 import store from './store/store'
 import { BrowserRouter as Router } from 'react-router-dom'
-import chakraProvider, { ChakraProvider } from '@chakra-ui/react'
 
 ReactDOM.createRoot(document.getElementById('root')).render(
     <Provider store={store}>
-        <ChakraProvider>
             <Router>
                 <App />
             </Router>
-        </ChakraProvider>
     </Provider>
 )

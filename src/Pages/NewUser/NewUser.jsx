@@ -1,5 +1,5 @@
 import React from 'react'
-import LoginForm from '../../components/LoginForm'
+import LoginForm from '../../components/LoginForm/LoginForm'
 import CreateUser from '../../components/CreateUser'
 import { useState } from 'react'
 import './NewUser.css';

@@ -2,7 +2,6 @@
 import React, { useEffect, useState } from 'react';
 import friendRequestService from '../services/friendService';
 import { useSelector } from 'react-redux';
-import { Box, Button, Heading } from "@chakra-ui/react";
 
 const FriendRequests = () => {
     const [requests, setRequests] = useState([]);
@@ -42,14 +41,7 @@ const FriendRequests = () => {
                     requests && <>Feels empty here</>
                 }
             </ul>
-            <Box textAlign="center" py={10}>
-                <Heading as="h1" size="2xl" mb={4}>
-                    Welcome to My Blog
-                </Heading>
-                <Button colorScheme="teal" size="lg">
-                    Get Started
-                </Button>
-            </Box>
+            
         </div>
 
     );

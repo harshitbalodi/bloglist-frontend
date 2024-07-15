@@ -1,6 +1,6 @@
 import { useEffect } from 'react'
 import { ToastContainer } from 'react-toastify'
-import NewUser from './Pages/NewUser/NewUser'
+// import NewUser from './Pages/NewUser/NewUser'
 import Header from './components/Header/Header'
 import Footer from './components/Footer/Footer'
 import BlogsPage from './Pages/BlogsPage/BlogsPage'
@@ -12,6 +12,7 @@ import loginService from './services/loginService'
 import { useLocation } from 'react-router-dom'
 import FriendRequests from './components/FriendRequests'
 import FriendsList from './components/FriendList'
+import LoginPage from './Pages/LoginPage/LoginPage'
 
 const App = () => {
   const dispatch = useDispatch();
@@ -59,7 +60,7 @@ const App = () => {
       <div className='main-container'>
         {
           !user ?
-            <NewUser />
+            <LoginPage />
             :
             <>
               <BlogsPage />
