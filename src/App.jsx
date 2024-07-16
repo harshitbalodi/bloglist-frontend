@@ -1,6 +1,4 @@
 import { useEffect } from 'react'
-import { ToastContainer } from 'react-toastify'
-// import NewUser from './Pages/NewUser/NewUser'
 import Header from './components/Header/Header'
 import Footer from './components/Footer/Footer'
 import BlogsPage from './Pages/BlogsPage/BlogsPage'
@@ -55,17 +53,17 @@ const App = () => {
 
   return (
     <div>
-      <Header />
-      <ToastContainer />
+      {/* <Header /> */}
       <div className='main-container'>
         {
           !user ?
             <LoginPage />
             :
             <>
+              <Header />
               <BlogsPage />
-              <FriendRequests/>
-              <FriendsList/>
+              <FriendRequests />
+              <FriendsList />
             </>
         }
       </div>
@@ -75,3 +73,5 @@ const App = () => {
 }
 
 export default App
+
+

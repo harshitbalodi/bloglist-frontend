@@ -1,13 +1,11 @@
-import { useState } from "react"
+import { useState } from "react";
 import blogService from "../../services/blogService";
 import { useDispatch, useSelector } from "react-redux";
 import { BlogThunk, setBlogs } from "../../store/blogsSlice";
 import './Blog.css';
-import DeleteIcon from '../../assets/delete-icon.svg';
-
+import { DeleteOutline, ThumbUp } from "@mui/icons-material";
 
 const Blog = ({ blog, index }) => {
-  // const [isView, setIsView] = useState(false);
   const [user, blogs] = useSelector(state => [state.user, state.blogs]);
   const dispatch = useDispatch();
 
@@ -27,8 +25,8 @@ const Blog = ({ blog, index }) => {
     if (action) {
       try {
         await blogService.deleteBlog(blog.id);
-        const oldblogs = blogs.filter(eachblog => eachblog.id != blog.id)
-        setBlogs(oldblogs);
+        const oldblogs = blogs.filter(eachblog => eachblog.id !== blog.id);
+        dispatch(setBlogs(oldblogs));
       } catch (error) {
         console.log(error);
       }
@@ -37,32 +35,33 @@ const Blog = ({ blog, index }) => {
 
   return (
     <div className="blog">
-      <div>
-        <span data-testid="title">
-          {blog?.title},
+      <div className="blog-header">
+        <span className="blog-title" data-testid="title">
+          {blog?.title}
         </span>
-        <span data-testid="author">
+        <span className="blog-author" data-testid="author">
           {blog?.author}
         </span>
-        <button onClick={() => setIsView(!isView)}>hide</button>
-        <div>
-          <a data-testid="url" href={blog?.url}>{blog?.url}</a>
-          <p data-testid="likes">
-            {blog?.likes} likes
-          </p>
-          <button data-testid="like" id="like" onClick={handleLike}> like</button>
-          <p data-testid="name"> {blog?.user?.name} </p>
-          {user?.username === blog?.user?.username &&
-            <img onClick={handleRemove} id="remove" src={DeleteIcon} alt="" />
-          }
-        </div>
-
       </div>
-
-
+      <div className="blog-body">
+        <a className="blog-url" data-testid="url" href={blog?.url} target="_blank" rel="noopener noreferrer">
+          {blog?.url}
+        </a>
+        <div className="blog-likes" data-testid="likes">
+          <ThumbUp onClick={handleLike} className="icon like-icon" />
+          <span>{blog?.likes}</span>
+        </div>
+      </div>
+      <div className="blog-footer">
+        <span className="blog-user" data-testid="name">
+          {blog?.user?.name}
+        </span>
+        {user?.username === blog?.user?.username && (
+          <DeleteOutline onClick={handleRemove} className="icon delete-icon" />
+        )}
+      </div>
     </div>
-
-  )
+  );
 }
 
-export default Blog
+export default Blog;
