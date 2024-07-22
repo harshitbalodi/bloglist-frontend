@@ -1,46 +1,47 @@
-import axios from "axios";
 import axiosInstance from "./axios";
 
-console.log(import.meta.env.VITE_BACKEND_URI);
-const baseUrl = import.meta.env.VITE_BACKEND_URI + "/api/blogs";
+const blogUrl = "/blogs";
 
 const getAll = async () => {
   try {
-    const response = await axiosInstance.get('/blogs');
+    const response = await axiosInstance.get(blogUrl);
     return response.data;
   } catch (error) {
-    console.log(error);
+    console.error("Error fetching blogs:", error);
+    throw error;
   }
 };
 
 const createBlog = async (blogObj) => {
-  const response = await axios.post(baseUrl, blogObj, {
-    headers: { Authorization: token },
-  });
-  const data = response.data;
-  console.log(data);
-  return data;
+  try {
+    const response = await axiosInstance.post(blogUrl, blogObj);
+    return response.data;
+  } catch (error) {
+    console.error("Error creating blog:", error);
+    throw error;
+  }
 };
 
-const likeBlog = async (id) => {
-  const response = await axios.put(
-    baseUrl + `/${id}`,
-    { likes: 5 },
-    { headers: { Authorization: token } }
-  );
-  console.log(response.data);
-  return response.data;
+const toggleLikeBlog = async (id) => {
+  try {
+    const response = await axiosInstance.put(`${blogUrl}/like/${id}`);
+    return response.data;
+  } catch (error) {
+    console.error("Error liking blog:", error);
+    throw error;
+  }
 };
 
 const deleteBlog = async (id) => {
   try {
-    const response = await axios.delete(baseUrl + `/${id}`, {
-      headers: { Authorization: token },
-    });
-    console.log("Deletion:", response);
+    const response = await axiosInstance.delete(`${blogUrl}/${id}`);
+    return response.data;
   } catch (error) {
-    console.log(error);
+    console.error("Error deleting blog:", error);
     throw error;
   }
 };
-export default { getAll, createBlog, likeBlog, deleteBlog };
+
+const blogService = { getAll, createBlog, toggleLikeBlog, deleteBlog };
+
+export default blogService;

@@ -1,4 +1,4 @@
-import { useState } from "react";
+// import { useState } from "react";
 import blogService from "../../services/blogService";
 import { useDispatch, useSelector } from "react-redux";
 import { BlogThunk, setBlogs } from "../../store/blogsSlice";
@@ -11,7 +11,7 @@ const Blog = ({ blog, index }) => {
 
   const handleLike = async () => {
     try {
-      const data = await blogService.likeBlog(blog.id);
+      const data = await blogService.toggleLikeDislike(blog.id);
       const oldblogs = [...blogs];
       oldblogs[index] = data;
       dispatch(BlogThunk());
@@ -27,7 +27,7 @@ const Blog = ({ blog, index }) => {
         await blogService.deleteBlog(blog.id);
         const oldblogs = blogs.filter(eachblog => eachblog.id !== blog.id);
         dispatch(setBlogs(oldblogs));
-      } catch (error) {
+      } catch (error){
         console.log(error);
       }
     }
