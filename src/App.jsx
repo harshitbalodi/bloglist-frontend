@@ -1,16 +1,13 @@
 import { useEffect } from 'react'
-import Header from './components/Header/Header'
 import Footer from './components/Footer/Footer'
-import BlogsPage from './Pages/BlogsPage/BlogsPage'
 import { useDispatch, useSelector } from 'react-redux'
 import { setUser } from './store/userSlice'
 import './index.css';
 import token from './services/token'
 import loginService from './services/loginService'
 import { useLocation } from 'react-router-dom'
-import FriendRequests from './components/FriendRequests'
-import FriendsList from './components/FriendList'
-import LoginPage from './Pages/LoginPage/LoginPage'
+import ProtectedApp from './ProtectedApp'
+import UnProtectedApp from './UnProtectedApp'
 
 const App = () => {
   const dispatch = useDispatch();
@@ -52,21 +49,13 @@ const App = () => {
   }, [location.search]);
 
   return (
-    <div>
-      {/* <Header /> */}
-      <div className='main-container'>
+    <div>        
         {
           !user ?
-            <LoginPage />
+          <UnProtectedApp />
             :
-            <>
-              <Header />
-              <BlogsPage />
-              <FriendRequests />
-              <FriendsList />
-            </>
+          <ProtectedApp/>
         }
-      </div>
       <Footer />
     </div>
   )

@@ -5,6 +5,22 @@ import ArrowDown from '../../assets/arrow-down.svg';
 import { setUser } from '../../store/userSlice';
 import loginService from '../../services/loginService';
 import { toast, ToastContainer } from 'react-toastify';
+import { useLocation } from 'react-router-dom';
+
+export const NavigationLink = ({to, Icon, label}) => {
+  location = useLocation();
+  const isActive = location.pathname === to;
+  return (
+    <div>
+      <Link to={to} className={`nav-link ${isActive ? 'active' : ''}`}>
+        <Icon width={20} height={20} />
+        <span className='nav-label'>{label}</span>
+      </Link>
+    </div>
+  )
+}
+
+
 const Header = () => {
   const dispatch = useDispatch();
   const user = useSelector(state => state.user);
@@ -27,6 +43,7 @@ const Header = () => {
         {/* <img src="../../assets/bloglist-logo.jpg" alt="Bloglist" /> */}
         <h3 className='logo'>Bloglist</h3>
       </div>
+    
       {user && <div className='dropdown-container'
         onMouseEnter={() => setIsOpen(true)}
         onMouseLeave={() => setIsOpen(false)}

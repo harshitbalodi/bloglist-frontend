@@ -11,7 +11,7 @@ const Blog = ({ blog, index }) => {
 
   const handleLike = async () => {
     try {
-      const data = await blogService.toggleLikeDislike(blog.id);
+      const data = await blogService.toggleLikeBlog(blog.id);
       const oldblogs = [...blogs];
       oldblogs[index] = data;
       dispatch(BlogThunk());
@@ -48,8 +48,8 @@ const Blog = ({ blog, index }) => {
           {blog?.url}
         </a>
         <div className="blog-likes" data-testid="likes">
-          <ThumbUp onClick={handleLike} className="icon like-icon" />
-          <span>{blog?.likes}</span>
+          <ThumbUp onClick={handleLike} className="icon like-icon" color={Array.isArray(blogs.likes) && blogs?.likes.includes(user.id)?'primary':'inherit'}/>
+          <span>{Array.isArray(blogs.likes) && blog?.likes.length}</span>
         </div>
       </div>
       <div className="blog-footer">
