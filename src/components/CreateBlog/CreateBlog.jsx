@@ -3,6 +3,8 @@ import { useState } from 'react'
 import './CreateBlog.css';
 import CrossIcon from '../../assets/cross-icon.svg'
 import PlusIcon from '../../assets/plus-icon.svg';
+import BlogForm from '../BlogForm';
+import ArticleIcon from '../../assets/article-icon.svg';
 
 const CreateBlog = () => {
     const [createBlogVisible, setCreateBlogVisible] = useState(false);
@@ -42,6 +44,7 @@ const CreateBlog = () => {
                     Post Blog
                     <img src={PlusIcon} width={25} alt="" />
                 </button>
+                <img src={ArticleIcon} alt="" />
             </div>
             <div className='blog-form' style={showWhenVisible}>
                 <button className='cross-icon' onClick={() => setCreateBlogVisible(false)}>
@@ -86,7 +89,7 @@ const CreateBlog = () => {
                     <button data-testid='create' className='post-blog' type='submit'> Post</button>
 
                 </form>
-                
+                <BlogForm/>
             </div>
 
         </div>
