@@ -19,7 +19,6 @@ const App = () => {
       console.log("useeffect");
       try {
         const { data } = await loginService.refresh();
-
         console.log("data when hitting the login/refresh", data);
         dispatch(setUser(data));
         localStorage.setItem('userLoggedIn', JSON.stringify(data));

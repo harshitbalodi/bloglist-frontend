@@ -44,7 +44,7 @@ const LoginForm = () => {
         <Input.Password placeholder="Password" />
       </Form.Item>
       <Form.Item>
-        <Button type="primary" htmlType="submit" loading={loading} className="full-width">
+        <Button  onClick={onFinish} type="primary" htmlType="submit" loading={loading} className="full-width">
           Login
         </Button>
       </Form.Item>

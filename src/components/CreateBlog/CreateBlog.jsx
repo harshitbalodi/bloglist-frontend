@@ -40,7 +40,7 @@ const CreateBlog = () => {
             <div style={hideWhenVisible}>
                 <button data-testid="create-blog" className='show-form' onClick={() => setCreateBlogVisible(true)}>
                     Post Blog
-                    <img  src={PlusIcon} width={25} alt="" />
+                    <img src={PlusIcon} width={25} alt="" />
                 </button>
             </div>
             <div className='blog-form' style={showWhenVisible}>

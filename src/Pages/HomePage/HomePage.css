@@ -1,9 +1,22 @@
 .blogs-wrapper{
-    margin: .6rem;
+    /* margin: .6rem; */
+    padding: 0 144px;
     min-height: 90vh;
 }
 .blogs-container{
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
+}
+
+@media screen and (max-width:870px) {
+    .blogs-wrapper{
+        padding: 0 60px;
+    }
+}
+
+@media screen and (max-width: 500px) {
+    .blogs-wrapper{
+        padding: 0 20px;
+    }
 }

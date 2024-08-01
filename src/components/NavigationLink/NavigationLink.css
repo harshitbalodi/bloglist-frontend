@@ -1,0 +1,38 @@
+.nav-link {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-decoration: none;
+    color: gray;
+    padding: 3px;
+    transition: color 0.3s;
+}
+  
+  .nav-link .nav-label {
+    /* margin-left: 8px; */
+    font-size: 16px;
+    transition: color 0.3s;
+  }
+  
+  .nav-link.active {
+    color: blue;
+    border-bottom: 2px solid blue;
+  }
+  
+  .nav-link.active .nav-label {
+    color: blue;
+  }
+  
+  .nav-link svg {
+    transition: fill 0.3s;
+  }
+  
+  .nav-link.active svg {
+    fill: blue;
+  }
+  
+  @media screen and (max-width:665px) {
+    .nav-label{
+      display: none;
+    }
+  }

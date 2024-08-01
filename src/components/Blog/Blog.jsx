@@ -4,6 +4,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { BlogThunk, setBlogs } from "../../store/blogsSlice";
 import './Blog.css';
 import { DeleteOutline, ThumbUp } from "@mui/icons-material";
+import LikeIcon from "../../assets/customSVG/LikeIcon";
+import DislikeIcon from "../../assets/customSVG/DislikeIcon";
 
 const Blog = ({ blog, index }) => {
   const [user, blogs] = useSelector(state => [state.user, state.blogs]);
@@ -48,6 +50,8 @@ const Blog = ({ blog, index }) => {
           {blog?.url}
         </a>
         <div className="blog-likes" data-testid="likes">
+          <LikeIcon />
+          <DislikeIcon/>
           <ThumbUp onClick={handleLike} className="icon like-icon" color={Array.isArray(blogs.likes) && blogs?.likes.includes(user.id)?'primary':'inherit'}/>
           <span>{Array.isArray(blogs.likes) && blog?.likes.length}</span>
         </div>
