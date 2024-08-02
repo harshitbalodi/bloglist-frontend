@@ -48,7 +48,7 @@ const App = () => {
   }, [location.search]);
 
   return (
-    <div>        
+    <div className='app'>        
         {
           !user ?
           <UnProtectedApp />

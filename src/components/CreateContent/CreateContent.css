@@ -1,6 +1,39 @@
-.create-blog-wrapper {
+.create-content-wrapper {
     margin: 1rem;
-    width: 300px;
+    width: 100%;
+    max-width: 600px;
+  }
+  
+  .create-options {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .create-input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 20px;
+    font-size: 16px;
+  }
+  
+  .content-icons {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 10px;
+  }
+  
+  .content-option {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    cursor: pointer;
+  }
+  
+  .content-option img {
+    width: 25px;
+    height: 25px;
   }
   
   .post-blog, .show-form {

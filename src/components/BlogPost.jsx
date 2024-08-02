@@ -1,4 +1,5 @@
 import React from 'react';
+//react html parser is deprecated,find a new html parser
 import ReactHtmlParser from 'react-html-parser';
 
 const BlogPost = ({ blog }) => {
